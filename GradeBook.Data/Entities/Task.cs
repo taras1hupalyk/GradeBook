@@ -14,5 +14,9 @@ namespace GradeBook.Data.Entities
         public string Description { get; set; }
 
         public Guid SubjectId { get; set; }
+
+        public Grade Grade { get; set; }
+        public Subject Subject { get; set; }
+        public Teacher Teacher { get; set; }
     }
 }

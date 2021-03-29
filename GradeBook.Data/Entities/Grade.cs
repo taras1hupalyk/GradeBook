@@ -11,7 +11,9 @@ namespace GradeBook.Data.Entities
 
         public string Description { get; set; }
 
-        public Guid TaskId { get; set; }
+        
 
+
+        public Task Task { get; set; }
     }
 }

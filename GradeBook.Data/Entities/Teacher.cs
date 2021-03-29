@@ -14,5 +14,6 @@ namespace GradeBook.Data.Entities
         public string Patronymic { get; set; }
 
 
+        public Subject Subject { get; set; }
     }
 }
