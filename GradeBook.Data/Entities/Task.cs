@@ -17,6 +17,6 @@ namespace GradeBook.Data.Entities
 
         public Grade Grade { get; set; }
         public Subject Subject { get; set; }
-        public Teacher Teacher { get; set; }
+        
     }
 }
