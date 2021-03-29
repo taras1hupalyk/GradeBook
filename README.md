@@ -1,3 +1,3 @@
 # GradeBook
-"GradeBook" is an application that can help  to monitore your success of your study 
+"GradeBook" is an application that can help  to monitore  success of your study 
       
