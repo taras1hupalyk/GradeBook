@@ -11,7 +11,7 @@ namespace GradeBook.Data
 
         public DbSet<Grade> Grades { get; set; }
         public DbSet<Subject> Subjects { get; set; }
-        public DbSet<Task> Tasks { get; set; }
+        public DbSet<Assignment> Tasks { get; set; }
         public DbSet<Teacher> Teachers { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
@@ -29,13 +29,13 @@ namespace GradeBook.Data
         private void UpdateStructure(ModelBuilder builder)
         {
             builder.Entity<Grade>()
-                 .HasOne(a => a.Task)
+                 .HasOne(a => a.Assignment)
                  .WithOne(b => b.Grade)
-                 .HasForeignKey<Task>(c => c.Id);
+                 .HasForeignKey<Assignment>(c => c.Id);
 
-            builder.Entity<Task>()
+            builder.Entity<Assignment>()
                 .HasOne<Subject>(a => a.Subject)
-                .WithMany(b => b.Task)
+                .WithMany(b => b.Assignments)
                 .HasForeignKey(s => s.SubjectId);
 
             builder.Entity<Teacher>()

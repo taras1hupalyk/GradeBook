@@ -3,7 +3,7 @@
 
 namespace GradeBook.Data.Entities
 {
-    public class Task
+    public class Assignment
     {
         public Guid Id { get; set; }
 

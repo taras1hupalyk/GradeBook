@@ -14,6 +14,6 @@ namespace GradeBook.Data.Entities
         
 
 
-        public Task Task { get; set; }
+        public Assignment Assignment { get; set; }
     }
 }
