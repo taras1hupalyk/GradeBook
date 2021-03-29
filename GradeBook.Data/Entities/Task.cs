@@ -1,0 +1,18 @@
+﻿using System;
+
+
+namespace GradeBook.Data.Entities
+{
+    public class Task
+    {
+        public Guid Id { get; set; }
+
+        public string Name { get; set; }
+
+        public double MaxGrade { get; set; }
+
+        public string Description { get; set; }
+
+        public Guid SubjectId { get; set; }
+    }
+}
