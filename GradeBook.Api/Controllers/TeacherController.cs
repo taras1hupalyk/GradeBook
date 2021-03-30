@@ -25,5 +25,13 @@ namespace GradeBook.Api.Controllers
             await teacherRepository.AddTeacherAsync(teacher);
             return teacher;
         }
+
+
+        [HttpGet]
+        public async Task<List<Teacher>> GetTeachersAsync()
+        {
+            var result = await teacherRepository.GetAllAsync();
+            return result;
+        }
     }
 }
