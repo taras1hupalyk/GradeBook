@@ -16,8 +16,4 @@
     <ProjectReference Include="..\GradeBook.Data\GradeBook.Data.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Services\" />
-  </ItemGroup>
-
 </Project>
