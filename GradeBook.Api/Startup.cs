@@ -1,3 +1,5 @@
+using GradeBook.Api.Services;
+using GradeBook.Api.Services.Interfaces;
 using GradeBook.Data;
 using GradeBook.Data.Repositories;
 using GradeBook.Data.Repositories.Intefaces;
@@ -30,7 +32,7 @@ namespace GradeBook.Api
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<ApplicationDbContext>();
-
+            services.AddScoped<ITeacherService, TeacherService>();
             services.AddScoped<ITeacherRepository, TeacherRepository>();
             services.AddControllers();
             services.AddSwaggerGen(c =>

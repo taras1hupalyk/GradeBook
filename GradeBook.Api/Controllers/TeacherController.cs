@@ -1,4 +1,5 @@
-﻿using GradeBook.Data.Entities;
+﻿using GradeBook.Api.Services.Interfaces;
+using GradeBook.Data.Entities;
 using GradeBook.Data.Repositories.Intefaces;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -12,17 +13,17 @@ namespace GradeBook.Api.Controllers
     [Route("api/teacher")]
     public class TeacherController : Controller
     {
-        private ITeacherRepository teacherRepository;
+        private ITeacherService teacherService;
 
-        public TeacherController(ITeacherRepository teacherRepository)
+        public TeacherController(ITeacherService teacherService)
         {
-            this.teacherRepository = teacherRepository;
+            this.teacherService = teacherService;
         }
 
         [HttpPost]
         public  async Task<ActionResult<Teacher>> CreateTeacher( Teacher teacher)
         {
-            await teacherRepository.AddTeacherAsync(teacher);
+            await teacherService.AddTeacherAsync(teacher);
             return teacher;
         }
 
@@ -31,7 +32,7 @@ namespace GradeBook.Api.Controllers
         [HttpGet]
         public async Task<List<Teacher>> GetTeachersAsync()
         {
-            var result = await teacherRepository.GetAllAsync();
+            var result = await teacherService.GetAllTeachersAsync();
             return result;
         }
 
