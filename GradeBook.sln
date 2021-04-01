@@ -9,7 +9,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GradeBook.Client", "GradeBo
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GradeBook.Data", "GradeBook.Data\GradeBook.Data.csproj", "{8E23D87B-482D-4B8E-A656-3A7A32CAC2E3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleAppForTests", "ConsoleApp1\ConsoleAppForTests.csproj", "{68819224-0310-4E8E-B567-B83890816483}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConsoleAppForTests", "ConsoleApp1\ConsoleAppForTests.csproj", "{68819224-0310-4E8E-B567-B83890816483}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GradeBook.Common", "GradeBook.Common\GradeBook.Common.csproj", "{6EBB77EB-1969-4E36-94E4-0FA3E04B22C2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{68819224-0310-4E8E-B567-B83890816483}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{68819224-0310-4E8E-B567-B83890816483}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{68819224-0310-4E8E-B567-B83890816483}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6EBB77EB-1969-4E36-94E4-0FA3E04B22C2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6EBB77EB-1969-4E36-94E4-0FA3E04B22C2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6EBB77EB-1969-4E36-94E4-0FA3E04B22C2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6EBB77EB-1969-4E36-94E4-0FA3E04B22C2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
