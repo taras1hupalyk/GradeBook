@@ -6,7 +6,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-
+//TODO change data transfer object from Teacher to TeacherDTO
+//TODO fixe route
 namespace GradeBook.Api.Controllers
 {
     [ApiController]

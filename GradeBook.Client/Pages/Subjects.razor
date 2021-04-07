@@ -1,6 +1,119 @@
 ﻿@page "/subjects"
+@using GradeBook.Common.Models
+@using TeacherServices.Interfaces
+@inject ITeacherService teacherService
+@inject ISubjectService subjectService
+@inject HttpClient httpClient
 <h3>Subjects</h3>
 
-@code {
-
+@if (subjects == null && teachers == null)
+{
+    <p><em>Loading...</em></p>
 }
+else
+{
+    <div class="addingSubject">
+
+        <EditForm Model="@subject" class="editForm">
+            <div class="inputName">
+                <p> Name</p>
+                <InputTextArea @bind-Value="subject.Name" />
+            </div>
+            <div class="inputIsMajor">
+                <p class="IsMajor">is major</p>
+                <InputCheckbox @bind-Value="subject.IsMajor" class="IsMajor" />
+            </div>
+            <div class="inputTeacher">
+                <InputSelect @bind-Value="@selectedValue">
+                    @foreach (var item in teachers)
+                        {
+                        <option value="@item.Id">@item.LastName</option>
+                        }
+                </InputSelect>
+            </div>
+            <div>
+                <button class="btn btn-primary" @onclick="SendDataToBackEnd"> send data to backEnd</button>
+
+            </div>
+        </EditForm>
+    </div>
+
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Name of lesson</th>
+                <th>Is lesson major</th>
+                <th>Teacher</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var subjectItem in subjects)
+            {
+                <tr>
+                    <td>@subjectItem.Name</td>
+                    <td>@subjectItem.IsMajor</td>
+                    <td>
+                        @teachers.Where(teacher => teacher.Id == subjectItem.LectureTeacherId).FirstOrDefault().LastName
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+    <button class="btn btn-primary" @onclick="OnInitializedAsync"> Reload</button>
+}
+
+
+<style>
+    .editForm {
+        display: grid;
+        grid-template-columns: repeat(3, fr);
+        grid-template-rows: minmax(100px,auto);
+        grid-template-areas:
+            "name isMajor teacher";
+        6t
+    }
+
+    .inputName {
+        grid-area: name;
+    }
+
+    .inputIsMajor {
+        grid-area: isMajor;
+    }
+
+    .inputTeacher {
+        grid-area: teacher;
+    }
+
+    .IsMajor {
+        display: inline;
+    }
+
+        .IsMajor > p {
+            margin-left: 4px;
+        }
+</style>
+
+@code {
+    SubjectDTO subject = new SubjectDTO();
+    Guid selectedValue;
+    List<TeacherDTO> teachers;
+    List<SubjectDTO> subjects;
+
+
+    private async void SendDataToBackEnd()
+    {        
+        subject.LectureTeacherId = selectedValue;
+        await subjectService.AddSubject(subject);
+        subject.Name = null;
+    }
+
+    protected async override Task OnInitializedAsync()
+    {
+        teachers = await teacherService.GetAllTeachers();
+        subjects = await subjectService.GetAllSubjects();
+    }
+}
+

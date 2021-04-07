@@ -24,7 +24,9 @@ namespace GradeBook.Client
                 
             });
             builder.Services.AddScoped<ITeacherService, TeacherService>();
-           
+            builder.Services.AddScoped<ISubjectService, SubjectService>();
+
+
             await builder.Build().RunAsync();
         }
     }

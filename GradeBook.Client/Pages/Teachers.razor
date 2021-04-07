@@ -6,31 +6,33 @@
 
 <h3>Teachers</h3>
 
+
+<EditForm Model="@teacher">
+    <div>
+        <p>First Name</p>
+        <InputTextArea @bind-Value="teacher.FirstName" />
+    </div>
+    <div>
+        <p>Last Name</p>
+        <InputTextArea @bind-Value="teacher.LastName" />
+    </div>
+    <div>
+        <p>Patronymic</p>
+        <InputTextArea @bind-Value="teacher.Patronymic" />
+    </div>
+
+    <div>
+        <button class="btn btn-primary" @onclick="SendDataToBackEnd"> send data to backEnd</button>
+
+    </div>
+</EditForm>
+
 @if (teachers == null)
 {
     <p><em>Loading...</em></p>
 }
 else
 {
-    <EditForm Model="@teacher">
-        <div>
-            <p>First Name</p>
-            <InputTextArea @bind-Value="teacher.FirstName" />
-        </div>
-        <div>
-            <p>Last Name</p>
-            <InputTextArea @bind-Value="teacher.LastName" />
-        </div>
-        <div>
-            <p>Patronymic</p>
-            <InputTextArea @bind-Value="teacher.Patronymic" />
-        </div>
-
-        <div>
-            <button class="btn btn-primary" @onclick="SendDataToBackEnd"> send data to backEnd</button>
-            
-        </div>
-    </EditForm>
 
 
     <table class="table">
@@ -62,10 +64,10 @@ else
 @code {
     List<TeacherDTO> teachers;
     TeacherDTO teacher;
-    
-    protected  override async Task OnInitializedAsync()
+
+    protected override async Task OnInitializedAsync()
     {
-        
+
         teacher = new TeacherDTO();
         this.teachers = await teacherService.GetAllTeachers();
         //teachers = await httpClient.GetFromJsonAsync<List<TeacherDTO>>("https://localhost:44383/api/teacher");
@@ -78,7 +80,7 @@ else
 
     private async Task SendDataToBackEnd()
     {
-          await teacherService.AddTeacher(teacher);
+        await teacherService.AddTeacher(teacher);
 
     }
 }

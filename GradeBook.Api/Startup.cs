@@ -44,7 +44,11 @@ namespace GradeBook.Api
                    .AllowAnyMethod());
             });
             services.AddDbContext<ApplicationDbContext>();
+            services.AddScoped<ISubjectService, SubjectService>();
+            services.AddScoped<ISubjectRepository, SubjectRepository>();
+
             services.AddScoped<ITeacherService, TeacherService>();
+
             services.AddScoped<ITeacherRepository, TeacherRepository>();
             services.AddControllers();
             services.AddSwaggerGen(c =>
