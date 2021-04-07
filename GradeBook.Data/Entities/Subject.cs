@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace GradeBook.Data.Entities
 {
@@ -12,5 +13,8 @@ namespace GradeBook.Data.Entities
 
         public Guid LectureTeacherId { get; set; }
 
+
+        public IEnumerable<Assignment> Assignments { get; set; }
+        public Teacher Teacher { get; set; }
     }
 }

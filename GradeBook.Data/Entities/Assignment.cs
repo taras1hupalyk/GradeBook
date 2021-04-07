@@ -3,7 +3,7 @@
 
 namespace GradeBook.Data.Entities
 {
-    public class Task
+    public class Assignment
     {
         public Guid Id { get; set; }
 
@@ -14,5 +14,9 @@ namespace GradeBook.Data.Entities
         public string Description { get; set; }
 
         public Guid SubjectId { get; set; }
+
+        public Grade Grade { get; set; }
+        public Subject Subject { get; set; }
+        
     }
 }

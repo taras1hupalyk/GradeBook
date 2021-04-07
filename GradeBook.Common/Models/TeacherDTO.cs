@@ -1,9 +1,13 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Text.Json.Serialization;
+using System.Threading.Tasks;
 
-
-namespace GradeBook.Data.Entities
+namespace GradeBook.Common.Models
 {
-    public class Teacher
+    public class TeacherDTO
     {
         public Guid Id { get; set; }
 
@@ -12,8 +16,5 @@ namespace GradeBook.Data.Entities
         public string LastName { get; set; }
 
         public string Patronymic { get; set; }
-
-        public Subject Subject { get; set; }
-
     }
 }

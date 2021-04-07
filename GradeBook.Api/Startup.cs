@@ -1,3 +1,9 @@
+using GradeBook.Api.Services;
+using GradeBook.Api.Services.Interfaces;
+using GradeBook.Data;
+using GradeBook.Data.Repositories;
+using GradeBook.Data.Repositories.Intefaces;
+using Microsoft.AspNetCore.Authentication.Certificate;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -26,7 +32,24 @@ namespace GradeBook.Api
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddAuthentication(
+           CertificateAuthenticationDefaults.AuthenticationScheme)
+           .AddCertificate();
+            services.AddCors(policy =>
+            {
+                policy.AddPolicy("OpenCorsPolicy",
+                   opt =>
+                   opt.AllowAnyOrigin()
+                   .AllowAnyHeader()
+                   .AllowAnyMethod());
+            });
+            services.AddDbContext<ApplicationDbContext>();
+            services.AddScoped<ISubjectService, SubjectService>();
+            services.AddScoped<ISubjectRepository, SubjectRepository>();
 
+            services.AddScoped<ITeacherService, TeacherService>();
+
+            services.AddScoped<ITeacherRepository, TeacherRepository>();
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {
@@ -39,13 +62,14 @@ namespace GradeBook.Api
         {
             if (env.IsDevelopment())
             {
+                app.UseAuthentication();
                 app.UseDeveloperExceptionPage();
                 app.UseSwagger();
                 app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "GradeBook.Api v1"));
             }
 
             app.UseHttpsRedirection();
-
+            app.UseCors("OpenCorsPolicy");
             app.UseRouting();
 
             app.UseAuthorization();
