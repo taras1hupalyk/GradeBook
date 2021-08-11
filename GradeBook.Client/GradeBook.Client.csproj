@@ -19,7 +19,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\ConsoleApp1\ConsoleAppForTests.csproj" />
     <ProjectReference Include="..\GradeBook.Common\GradeBook.Common.csproj" />
   </ItemGroup>
 
